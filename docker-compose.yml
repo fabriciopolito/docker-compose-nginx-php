@@ -1,0 +1,32 @@
+services:
+  web_service:
+    container_name: ${web_container_name-nginx_default}
+    restart: ${web_container_restar-'unless-stopped'}
+    build:
+      context: .
+      target: nginx_target
+    ports:
+      - ${web_container_host_insecure-80}:80
+    volumes:
+      - ${web_container_host_conf_volume-./etc/nginx/}:/etc/nginx/conf.d/
+      - ${web_container_host_volume-./}:/var/www
+    networks:
+      - docker-lamp-nginx-php
+  
+  php_service:
+    container_name: ${php_container_name-php_default}
+    restart: ${php_container_restar-'unless-stopped'}
+    build: 
+      context: .
+      target: php_target
+    volumes:
+      - ${php_container_host_volume-./}:/var/www
+      - ${php_container_host_conf_volume-./etc/php/php.ini}:/usr/local/etc/php/php.ini
+    networks:
+      - docker-lamp-nginx-php
+
+networks:
+  docker-lamp-nginx-php:
+    driver: bridge
+    
+
