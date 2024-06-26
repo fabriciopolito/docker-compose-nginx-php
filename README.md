@@ -14,30 +14,30 @@
 - Coloque seus arquivos fonte em `./public/`
 - Por fim, execute: `docker compose up -d`
 
-### Listando os containers em execução
+### Listar os containers em execução
 
 - `docker container ls`
 
-### Parando um container específico
+### Parar um container específico
 
 - `docker container stop <nome_ou_id>`
 
-### Reiniciado um container específico
+### Reiniciar um container específico
 
 - `docker container restart <nome_ou_id>`
 
-### Derrubando todos os container desta stack
+### Derrubar todos os contêineres desta stack
 
 - `docker compose down`
 
-### Acessando o terminal do Nginx
+### Acessar o terminal do Nginx
 
 - `docker container exec -it nginx_server sh` ou `docker container exec -it <nome_do_servico_no_docker_compose-ou-id> sh`
 
 Teste de comunicação entre os dois container, no terminal do Nginx: 
 - `ping php_service`
 
-### Acessando o terminal do PHP
+### Acessar o terminal do PHP
 
 - `docker container exec -it php-fpm_server bash` ou `docker container exec -it <nome_do_servico_no_docker_compose-ou-id> bash`
 
@@ -45,7 +45,7 @@ Teste de comunicação entre os dois container, no terminal do PHP:
 
 - `ping nginx_server`
 
-### Inspecionando os contêineres
+### Inspecionar os contêineres
 
 - `docker container inspect nginx_server`
 - `docker container inspect php-fpm_server`
@@ -56,7 +56,7 @@ Teste de comunicação entre os dois container, no terminal do PHP:
 
 - `ctrl + c` para sair.
 
-### Limpando os caches do Docker
+### Limpar os caches do Docker
 
 - Visualizando espaço utilizado pelo Docker: `docker system df`
 - Removendo contêineres do cache: `docker container prune -f`
@@ -66,7 +66,7 @@ Teste de comunicação entre os dois container, no terminal do PHP:
 - Removendo rede não utilizadas: `docker network prune -f`
 - **Removendo tudo**: `docker system prune --volumes -af`
 
-### Personalização
+### Personalizar
 
 Você é livre para adicionar quaisquer outras imagens a esta stack, como:
 
